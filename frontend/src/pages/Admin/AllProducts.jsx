@@ -4,7 +4,11 @@ import { useAllProductsQuery } from "../../redux/api/productApiSlice";
 import AdminMenu from "./AdminMenu";
 
 const AllProducts = () => {
-  const { data: products, isLoading, isError } = useAllProductsQuery();
+  const { data: products, isLoading, isError ,refetch} = useAllProductsQuery();
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   if (isLoading) {
     return <div>Loading...</div>;
